@@ -61,20 +61,33 @@ def response_message(event):
     
     col_questions = [CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
                                     text = "a",
-                                    actions=[{"type": "message", "label": "IA1", "text":"正解"}, {"type": "message", "label": "IA1", "text":"正解"}])]
-                                    
-                                    
-                 
+                                    actions=[{"type": "message", "label": "IA1", "text": "正解"},
+                                            {"type": "message", "label": "IA1", "text": "正解"},
+                                            {"type": "message", "label": "IA1", "text": "正解"}]),
+                    CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+                                    text = "a",
+                                    actions=[{"type": "message", "label": "IA1", "text": "正解"},
+                                            {"type": "message", "label": "IA1", "text": "正解"},
+                                            {"type": "message", "label": "IA1", "text": "正解"}]),
+                    CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+                                    text = "a",
+                                    actions=[{"type": "message", "label": "IA1", "text": "正解"},
+                                            {"type": "message", "label": "IA1", "text": "正解"},
+                                            {"type": "message", "label": "IA1", "text": "正解"}]),
+                    CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+                                    text = "a",
+                                    actions=[{"type": "message", "label": "IA1", "text": "正解"},
+                                            {"type": "message", "label": "IA1", "text": "正解"},
+                                            {"type": "message", "label": "IA1", "text": "正解"}])]
 
     messages = TemplateSendMessage(alt_text="問題です。", template=CarouselTemplate(columns=col_questions))
     line_bot_api.reply_message(event.reply_token, messages)
-'''
 
+'''
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     linebot_api.reply_message(event.reply_token, TextSendMessage(text="event.message.text"))
 '''
-
   
 if __name__ == '__main__':
     app.run()
