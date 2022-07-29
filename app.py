@@ -60,22 +60,22 @@ def response_message(event):
     question = ques_list[ques_num][0]
     
     col_questions = [CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                                    text = question,
+                                    text = str(question),
                                     actions=[{"type": "message", "label": "IA1", "text": "正解"},
                                             {"type": "message", "label": "IA2", "text": "正解"},
                                             {"type": "message", "label": "IA3", "text": "正解"}]),
                     CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                                    text = question,
+                                    text = str(question),
                                     actions=[{"type": "message", "label": "IB", "text": "正解"},
                                             {"type": "message", "label": "IIA", "text": "正解"},
                                             {"type": "message", "label": "IIB", "text": "正解"}]),
                     CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                                    text = question,
+                                    text = str(question),
                                     actions=[{"type": "message", "label": "IIIA", "text": "正解"},
                                             {"type": "message", "label": "IIIB", "text": "正解"},
                                             {"type": "message", "label": "IIIC", "text": "正解"}]),
                     CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                                    text = question,
+                                    text = str(question),
                                     actions=[{"type": "message", "label": "IVA", "text": "正解"},
                                             {"type": "message", "label": "IVB", "text": "正解"}])]
 
