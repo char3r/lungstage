@@ -68,7 +68,7 @@ def response_message(event):
                  
 
     messages = TemplateSendMessage(alt_text="問題です。", template=CarouselTemplate(columns=col_questions))
-    line_bot_api.reply_message(event.reply_token, messages=messages)
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text="event.message.text"))
 '''
 
 @handler.add(MessageEvent, message=TextMessage)
