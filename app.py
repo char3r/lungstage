@@ -97,7 +97,7 @@ def handle_text_message(event):
 '''
 
 @handler.add(MessageEvent, message=TextMessage)
-def handle_text_message(event):
+def handle_message(event):
     #ques_num = random.randrange(len(ques_list))
     #question = ques_list[ques_num][0]
     '''
@@ -109,7 +109,7 @@ def handle_text_message(event):
         ])
     '''
     #messages = TemplateSendMessage(alt_text="問題です。", template=carousel_template)
-    line_bot_api.reply_message(event.reply_token, messages=TextSendMessage(text='a'))
+    line_bot_api.reply_message(event.reply_token, messages=TextSendMessage(text=event.message.text))
   
 if __name__ == '__main__':
     app.run()
