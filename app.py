@@ -45,6 +45,7 @@ ques_list = [['T1aN0M0', 'IA1'],
 def callback():
     signature = request.headers["X-Line-Signature"]
     body = request.get_data(as_text=True)
+    app.logger.info("Request body: " + body)
 
     try:
         handler.handle(body, signature)
@@ -78,4 +79,6 @@ def handle_message(event):
 
   
 if __name__ == '__main__':
-    app.run()
+    # app.run()
+    port = int(os.getenv("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
