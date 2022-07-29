@@ -63,9 +63,9 @@ def response_message(event):
     
     def discriminant_state(answer_index: int):
         if answer==stage_list[answer_index]:
-            return f"◯ 正解\n{question}, Stage {answer}"
+            return f"◯ 正解\n{question}→Stage {answer}"
         else:
-            return f"× 不正解\nあなたの答えは Stage stage_list[answer_index]\n正解は {question}, Stage {answer}"
+            return f"× 不正解\nあなたの答えは Stage {stage_list[answer_index]}\n正解は {question}→Stage {answer}"
                                             
     col_questions = [CarouselColumn(title = question,
                                     text = "正しいUICC第8版の肺癌ステージを選べ。",
