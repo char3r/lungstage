@@ -88,11 +88,7 @@ def callback():
   
 @handler.add(MessageEvent, message=TextMessage)
 def handle_image_message(event):
-    messages = make_carousel_template()
-    line_bot_api.reply_message(
-        event.reply_token,
-        messages
-    )
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=make_carousel_template()))
   
 if __name__ == '__main__':
     app.run()
