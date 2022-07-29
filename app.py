@@ -59,7 +59,8 @@ def response_message(event):
     #ques_num = random.randrange(len(ques_list))
     #question = ques_list[ques_num][0]
     
-    col_questions = [CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+    col_questions = [CarouselColumn(thumbnail_image_url="https://www.shimay.uno/nekoguruma/wp-content/uploads/sites/2/2018/03/20171124_194201-508x339.jpg",
+                                    title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
                                     text = "a",
                                     actions=[{"type": "message", "label": "IA1", "text":"正解"}])]
                                     
