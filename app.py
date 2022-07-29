@@ -43,12 +43,6 @@ ques_list = [['T1aN0M0', 'IA1'],
              
 stage_list = ["IA1", "IA2", "IA3", "IB", "IIA", "IIB", "IIIA", "IIIB", "IIIC", "IVA", "IVB"]
 
-def discriminant_state(answer_index: int):
-    if answer==stage_list[answer_index]:
-        return f"◯ 正解\n{question}, Stage {answer}"
-    else:
-        return f"× 不正解\nあなたの答えは Stage stage_list[answer_index]\n正解は {question}, Stage {answer}"
-
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers["X-Line-Signature"]
@@ -62,11 +56,16 @@ def callback():
 
     return 'OK'
 
-
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
     ques_num = random.randrange(len(ques_list))
     question, answer = ques_list[ques_num]
+    
+    def discriminant_state(answer_index: int):
+        if answer==stage_list[answer_index]:
+            return f"◯ 正解\n{question}, Stage {answer}"
+        else:
+            return f"× 不正解\nあなたの答えは Stage stage_list[answer_index]\n正解は {question}, Stage {answer}"
                                             
     col_questions = [CarouselColumn(title = question,
                                     text = "正しいUICC第8版の肺癌ステージを選べ。",
