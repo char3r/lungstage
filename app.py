@@ -58,13 +58,16 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
     ques_num = random.randrange(len(ques_list))
-    question = ques_list[ques_num][0]
+    question, answer = ques_list[ques_num]
                                             
     col_questions = [CarouselColumn(title = question,
                                     text = "正しいUICC第8版の肺癌ステージを選べ。",
-                                    actions=[{"type": "message", "label": "IA1", "text": "正解"},
-                                        {"type": "message", "label": "IA2", "text": "正解"},
-                                        {"type": "message", "label": "IA3", "text": "正解"}]),
+                                    actions=[{"type": "message", "label": "IA1",
+                                        "text": f"◯ 正解\n{question}, Stage {answer}" if answer=="IA1" else f"× 不正解\n{question}, Stage {answer}"},
+                                        {"type": "message", "label": "IA2",
+                                        "text": f"◯ 正解\n{question}, Stage {answer}" if answer=="IA1" else f"× 不正解\n{question}, Stage {answer}"},
+                                        {"type": "message", "label": "IA3",
+                                        "text": f"◯ 正解\n{question}, Stage {answer}" if answer=="IA1" else f"× 不正解\n{question}, Stage {answer}"}]),
                      CarouselColumn(title = question,
                                     text = "正しいUICC第8版の肺癌ステージを選べ。",
                                     actions=[{"type": "message", "label": "IB", "text": "正解"},
@@ -76,12 +79,12 @@ def response_message(event):
                                         {"type": "message", "label": "IIIB", "text": "正解"},
                                         {"type": "message", "label": "IIIC", "text": "正解"}]),
                      CarouselColumn(title = question,
-                                    text = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+                                    text = "正しいUICC第8版の肺癌ステージを選べ。",
                                     actions=[{"type": "message", "label": "IVA", "text": "正解"},
                                         {"type": "message", "label": "IVB", "text": "正解"},
                                         {"type": "uri", "label": "学会ページを見る", "uri": "https://www.haigan.gr.jp/guideline/2021/1/0/210100000000.html"}])]
 
-    messages = TemplateSendMessage(alt_text=f"問題：{question}", template=CarouselTemplate(columns=col_questions))
+    messages = TemplateSendMessage(alt_text=f"問題 {question}", template=CarouselTemplate(columns=col_questions))
     line_bot_api.reply_message(event.reply_token, messages)
 
 '''
@@ -91,5 +94,4 @@ def handle_message(event):
 '''
   
 if __name__ == '__main__':
-    port = int(os.getenv("PORT",5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT",5000)))
