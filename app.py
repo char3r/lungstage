@@ -24,6 +24,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
+    """
     ques_list = [['T1aN0M0', 'IA1'],
                  ['T1bN0M0', 'IA2'],
                  ['T1cN0M0', 'IA3'],
@@ -57,6 +58,7 @@ def response_message(event):
                  ['TanyNanyM1c', 'IVB']]
     ques_num = random.randrange(len(ques_list))
     question = ques_list[ques_num][0]
+    """
     
     col_questions = [CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
                                     text = 'a',
