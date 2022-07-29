@@ -109,7 +109,7 @@ def handle_text_message(event):
         ])
 
     #messages = TemplateSendMessage(alt_text="問題です。", template=carousel_template)
-    line_bot_api.reply_message(event.reply_token, messages=carousel_template)
+    line_bot_api.reply_message(event.reply_token, messages='a')
   
 if __name__ == '__main__':
     app.run()
