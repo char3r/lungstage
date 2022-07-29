@@ -62,32 +62,32 @@ def handle_message(event):
 '''
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    ques_num = random.randrange(len(ques_list))
-    question = ques_list[ques_num][0]
+    #ques_num = random.randrange(len(ques_list))
+    #question = ques_list[ques_num][0]
     
     carousel_template = CarouselTemplate(
         columns = [
         CarouselColumn(
             title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-            text = question,
+            text = "a",
             actions=[MessageAction(type = "message", label = "IA1", text="****"),
                     MessageAction(type = "message", label = "IA2", text="****"),
                     MessageAction(type = "message", label = "IA3", text="****")]),
         CarouselColumn(
             title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-            text = question,
+            text = "a",
             actions=[MessageAction(type = "message", label = "IB", text="****"),
                     MessageAction(type = "message", label = "IIA", text="****"),
                     MessageAction(type = "message", label = "IIB", text="****")]),
         CarouselColumn(
             title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-            text = question,
+            text = "a",
             actions=[MessageAction(type = "message", label = "IIIA", text="****"),
                     MessageAction(type = "message", label = "IIIB", text="****"),
                     MessageAction(type = "message", label = "IIIC", text="****")]),
         CarouselColumn(
             title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-            text = question,
+            text = "a",
             actions=[MessageAction(type = "message", label = "IVA", text="****"),
                     MessageAction(type = "message", label = "IVB", text="****")])
         ])
