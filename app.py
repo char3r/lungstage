@@ -108,8 +108,8 @@ def handle_text_message(event):
             actions=[MessageAction(type = "message", label = "IVB", text="****")])
         ])
 
-    messages = TemplateSendMessage(alt_text="問題です。", template=carousel_template)
-    line_bot_api.reply_message(event.reply_token, messages)
+    #messages = TemplateSendMessage(alt_text="問題です。", template=carousel_template)
+    line_bot_api.reply_message(event.reply_token, messages=carousel_template)
   
 if __name__ == '__main__':
     app.run()
