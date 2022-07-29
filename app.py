@@ -60,7 +60,7 @@ def response_message(event):
     question = ques_list[ques_num][0]
     
     col_questions = [CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                                    text = 'a',
+                                    text = question,
                                     actions=[{"type": "message", "label": "IVA", "text": "正解"},
                                             {"type": "message", "label": "IVB", "text": "正解"}])]
 
