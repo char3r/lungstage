@@ -53,47 +53,40 @@ def callback():
 
     return 'OK'
 
-'''
 
 @handler.add(MessageEvent, message=TextMessage)
-def handle_text_message(event):
+def response_message(event):
     #ques_num = random.randrange(len(ques_list))
     #question = ques_list[ques_num][0]
     
-    carousel_template = CarouselTemplate(
-        columns = [
-        CarouselColumn(
-            title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-            text = "a",
-            actions=[MessageAction(type = "message", label = "IA1", text="****"),
-                    MessageAction(type = "message", label = "IA2", text="****"),
-                    MessageAction(type = "message", label = "IA3", text="****")]),
-        CarouselColumn(
-            title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-            text = "a",
-            actions=[MessageAction(type = "message", label = "IB", text="****"),
-                    MessageAction(type = "message", label = "IIA", text="****"),
-                    MessageAction(type = "message", label = "IIB", text="****")]),
-        CarouselColumn(
-            title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-            text = "a",
-            actions=[MessageAction(type = "message", label = "IIIA", text="****"),
-                    MessageAction(type = "message", label = "IIIB", text="****"),
-                    MessageAction(type = "message", label = "IIIC", text="****")]),
-        CarouselColumn(
-            title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-            text = "a",
-            actions=[MessageAction(type = "message", label = "IVA", text="****"),
-                    MessageAction(type = "message", label = "IVB", text="****")])
-        ])
+    col_questions = [CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+                                    text = "a",
+                                    actions=[MessageAction(type = "message", label = "IA1", text="****"),
+                                    MessageAction(type = "message", label = "IA2", text="****"),
+                                    MessageAction(type = "message", label = "IA3", text="****")]),
+                     CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+                                    text = "a",
+                                    actions=[MessageAction(type = "message", label = "IB", text="****"),
+                                    MessageAction(type = "message", label = "IIA", text="****"),
+                                    MessageAction(type = "message", label = "IIB", text="****")]),
+                     CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+                                    text = "a",
+                                    actions=[MessageAction(type = "message", label = "IIIA", text="****"),
+                                    MessageAction(type = "message", label = "IIIB", text="****"),
+                                    MessageAction(type = "message", label = "IIIC", text="****")]),
+                     CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+                                    text = "a",
+                                    actions=[MessageAction(type = "message", label = "IVA", text="****"),
+                                    MessageAction(type = "message", label = "IVB", text="****")])]
 
-    messages = TemplateSendMessage(alt_text="問題です。", template=carousel_template)
+    messages = TemplateSendMessage(alt_text="問題です。", template=CarouselTemplate(columns=col_questions))
     line_bot_api.reply_message(event.reply_token, messages)
 '''
 
 @handler.add(MessageEvent, message=TextMessage)
-def handle_text_message(event):
-    linebot_api.reply_message(event.reply_token, message=TextSendMessage(text="event.message.text"))
+def handle_message(event):
+    linebot_api.reply_message(event.reply_token, TextSendMessage(text="event.message.text"))
+'''
 
   
 if __name__ == '__main__':
