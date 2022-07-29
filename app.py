@@ -41,39 +41,6 @@ ques_list = [['T1aN0M0', 'IA1'],
              ['TanyNanyM1b', 'IVA'],
              ['TanyNanyM1c', 'IVB']]
 
-def make_carousel_template():
-    ques_num = random.randrange(len(ques_list))
-    question = ques_list[ques_num][0]
-    
-    message_template = TemplateSendMessage(
-        alt_text = "問題です。",
-        template = CarouselTemplate(columns = [CarouselColumn(
-                title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                text = question,
-                actions=[MessageAction(type = "message", label = "IA1", text="****"),
-                        MessageAction(type = "message", label = "IA2", text="****"),
-                        MessageAction(type = "message", label = "IA3", text="****")]),
-            CarouselColumn(
-                title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                text = question,
-                actions=[MessageAction(type = "message", label = "IB", text="****"),
-                        MessageAction(type = "message", label = "IIA", text="****"),
-                        MessageAction(type = "message", label = "IIB", text="****")]),
-            CarouselColumn(
-                title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                text = question,
-                actions=[MessageAction(type = "message", label = "IIIA", text="****"),
-                        MessageAction(type = "message", label = "IIIB", text="****"),
-                        MessageAction(type = "message", label = "IIIC", text="****")]),
-            CarouselColumn(
-                title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                text = question,
-                actions=[MessageAction(type = "message", label = "IVA", text="****"),
-                        MessageAction(type = "message", label = "IVB", text="****")])
-        )
-    )
-    return message_template
-
 @app.route("/callback", methods=['POST'])
 def callback():
     signature = request.headers["X-Line-Signature"]
@@ -87,8 +54,39 @@ def callback():
     return 'OK'
   
 @handler.add(MessageEvent, message=TextMessage)
-def handle_image_message(event):
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=make_carousel_template()))
+def handle_text_message(event):
+    ques_num = random.randrange(len(ques_list))
+    question = ques_list[ques_num][0]
+    
+    carousel_template = CarouselTemplate(
+        columns = [
+        CarouselColumn(
+            title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+            text = question,
+            actions=[MessageAction(type = "message", label = "IA1", text="****"),
+                    MessageAction(type = "message", label = "IA2", text="****"),
+                    MessageAction(type = "message", label = "IA3", text="****")]),
+        CarouselColumn(
+            title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+            text = question,
+            actions=[MessageAction(type = "message", label = "IB", text="****"),
+                    MessageAction(type = "message", label = "IIA", text="****"),
+                    MessageAction(type = "message", label = "IIB", text="****")]),
+        CarouselColumn(
+            title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+            text = question,
+            actions=[MessageAction(type = "message", label = "IIIA", text="****"),
+                    MessageAction(type = "message", label = "IIIB", text="****"),
+                    MessageAction(type = "message", label = "IIIC", text="****")]),
+        CarouselColumn(
+            title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+            text = question,
+            actions=[MessageAction(type = "message", label = "IVA", text="****"),
+                    MessageAction(type = "message", label = "IVB", text="****")])
+        ])
+
+    messages = TemplateSendMessage(alt_text="問題です。", template=carousel_template)
+    line_bot_api.reply_message(event.reply_token, messages)
   
 if __name__ == '__main__':
     app.run()
