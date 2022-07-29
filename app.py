@@ -79,7 +79,7 @@ def response_message(event):
                                     text = "問題：正しいUICC第8版の肺癌ステージを選べ。",
                                     actions=[{"type": "message", "label": "IVA", "text": "正解"},
                                         {"type": "message", "label": "IVB", "text": "正解"},
-                                        {"type": "uri", "label": "一覧を見る", "uri": "https://www.haigan.gr.jp/guideline/2021/1/0/210100000000.html"}])]
+                                        {"type": "uri", "label": "学会ページを見る", "uri": "https://www.haigan.gr.jp/guideline/2021/1/0/210100000000.html"}])]
 
     messages = TemplateSendMessage(alt_text=f"問題：{question}", template=CarouselTemplate(columns=col_questions))
     line_bot_api.reply_message(event.reply_token, messages)
