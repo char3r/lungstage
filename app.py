@@ -40,6 +40,14 @@ ques_list = [['T1aN0M0', 'IA1'],
              ['TanyNanyM1a', 'IVA'],
              ['TanyNanyM1b', 'IVA'],
              ['TanyNanyM1c', 'IVB']]
+             
+stage_list = ["IA1", "IA2", "IA3", "IB", "IIA", "IIB", "IIIA", "IIIB", "IIIC", "IVA", "IVB"]
+
+def discriminant_state(answer_index: int):
+    if answer==stage_list[answer_index]:
+        return f"◯ 正解\n{question}, Stage {answer}"
+    else:
+        return f"× 不正解\nあなたの答えは Stage stage_list[answer_index]\n正解は {question}, Stage {answer}"
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -62,27 +70,24 @@ def response_message(event):
                                             
     col_questions = [CarouselColumn(title = question,
                                     text = "正しいUICC第8版の肺癌ステージを選べ。",
-                                    actions=[{"type": "message", "label": "IA1",
-                                        "text": f"◯ 正解\n{question}, Stage {answer}" if answer=="IA1" else f"× 不正解\n{question}, Stage {answer}"},
-                                        {"type": "message", "label": "IA2",
-                                        "text": f"◯ 正解\n{question}, Stage {answer}" if answer=="IA1" else f"× 不正解\n{question}, Stage {answer}"},
-                                        {"type": "message", "label": "IA3",
-                                        "text": f"◯ 正解\n{question}, Stage {answer}" if answer=="IA1" else f"× 不正解\n{question}, Stage {answer}"}]),
+                                    actions=[{"type": "message", "label": stage_list[0], "text": discriminant_state(0)},
+                                        {"type": "message", "label": stage_list[1], "text": discriminant_state(1)},
+                                        {"type": "message", "label": stage_list[2], "text": discriminant_state(2)}]),
                      CarouselColumn(title = question,
                                     text = "正しいUICC第8版の肺癌ステージを選べ。",
-                                    actions=[{"type": "message", "label": "IB", "text": "正解"},
-                                        {"type": "message", "label": "IIA", "text": "正解"},
-                                        {"type": "message", "label": "IIB", "text": "正解"}]),
+                                    actions=[{"type": "message", "label": stage_list[3], "text": discriminant_state(3)},
+                                        {"type": "message", "label": stage_list[4], "text": discriminant_state(4)},
+                                        {"type": "message", "label": stage_list[5], "text": discriminant_state(5)}]),
                      CarouselColumn(title = question,
                                     text = "正しいUICC第8版の肺癌ステージを選べ。",
-                                    actions=[{"type": "message", "label": "IIIA", "text": "正解"},
-                                        {"type": "message", "label": "IIIB", "text": "正解"},
-                                        {"type": "message", "label": "IIIC", "text": "正解"}]),
+                                    actions=[{"type": "message", "label": stage_list[6], "text": discriminant_state(6)},
+                                        {"type": "message", "label": stage_list[7], "text": discriminant_state(7)},
+                                        {"type": "message", "label": stage_list[8], "text": discriminant_state(8)}]),
                      CarouselColumn(title = question,
                                     text = "正しいUICC第8版の肺癌ステージを選べ。",
-                                    actions=[{"type": "message", "label": "IVA", "text": "正解"},
-                                        {"type": "message", "label": "IVB", "text": "正解"},
-                                        {"type": "uri", "label": "学会ページを見る", "uri": "https://www.haigan.gr.jp/guideline/2021/1/0/210100000000.html"}])]
+                                    actions=[{"type": "message", "label": stage_list[9], "text": discriminant_state(9)},
+                                        {"type": "message", "label": stage_list[10], "text": discriminant_state(10)},
+                                        {"type": "uri", "label": "TNMまとめ（日本肺癌学会）", "uri": "https://www.haigan.gr.jp/guideline/2021/1/0/210100000000.html"}])]
 
     messages = TemplateSendMessage(alt_text=f"問題 {question}", template=CarouselTemplate(columns=col_questions))
     line_bot_api.reply_message(event.reply_token, messages)
