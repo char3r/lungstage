@@ -6,7 +6,7 @@ import random, os
 
 app = Flask(__name__)
 
-linebot_api = LineBotApi(os.environ["YOUR_CHANNEL_ACCESS_TOKEN"])
+line_bot_api = LineBotApi(os.environ["YOUR_CHANNEL_ACCESS_TOKEN"])
 handler = WebhookHandler(os.environ["YOUR_CHANNEL_SECRET"])
 
 ques_list = [['T1aN0M0', 'IA1'],
