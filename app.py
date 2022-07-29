@@ -61,7 +61,7 @@ def handle_message(event):
 
 '''
 @handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
+def handle_text_message(event):
     #ques_num = random.randrange(len(ques_list))
     #question = ques_list[ques_num][0]
     
