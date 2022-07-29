@@ -69,7 +69,12 @@ def response_message(event):
                                     text = "問題：正しいUICC第8版の肺癌ステージを選べ。",
                                     actions=[{"type": "message", "label": "IB", "text": "正解"},
                                         {"type": "message", "label": "IIA", "text": "正解"},
-                                        {"type": "message", "label": "IIB", "text": "正解"}])]
+                                        {"type": "message", "label": "IIB", "text": "正解"}]),
+                     CarouselColumn(title = question,
+                                    text = "問題：正しいUICC第8版の肺癌ステージを選べ。",
+                                    actions=[{"type": "message", "label": "IIIA", "text": "正解"},
+                                        {"type": "message", "label": "IIIB", "text": "正解"},
+                                        {"type": "message", "label": "IIIC", "text": "正解"}])]
 
     messages = TemplateSendMessage(alt_text=question, template=CarouselTemplate(columns=col_questions))
     line_bot_api.reply_message(event.reply_token, messages)
