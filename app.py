@@ -86,7 +86,7 @@ def response_message(event):
                                     text = "正しいUICC第8版の肺癌ステージを選べ。",
                                     actions=[{"type": "message", "label": stage_list[9], "text": discriminant_state(9)},
                                         {"type": "message", "label": stage_list[10], "text": discriminant_state(10)},
-                                        {"type": "uri", "label": "TNMまとめ（日本肺癌学会）", "uri": "https://www.haigan.gr.jp/guideline/2021/1/0/210100000000.html"}])]
+                                        {"type": "uri", "label": "TNMまとめ（肺癌学会）", "uri": "https://www.haigan.gr.jp/guideline/2021/1/0/210100000000.html"}])]
 
     messages = TemplateSendMessage(alt_text=f"問題 {question}", template=CarouselTemplate(columns=col_questions))
     line_bot_api.reply_message(event.reply_token, messages)
