@@ -56,29 +56,28 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def response_message(event):
-    #ques_num = random.randrange(len(ques_list))
-    #question = ques_list[ques_num][0]
+    ques_num = random.randrange(len(ques_list))
+    question = ques_list[ques_num][0]
     
     col_questions = [CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                                    text = "a",
+                                    text = question,
                                     actions=[{"type": "message", "label": "IA1", "text": "正解"},
-                                            {"type": "message", "label": "IA1", "text": "正解"},
-                                            {"type": "message", "label": "IA1", "text": "正解"}]),
+                                            {"type": "message", "label": "IA2", "text": "正解"},
+                                            {"type": "message", "label": "IA3", "text": "正解"}]),
                     CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                                    text = "a",
-                                    actions=[{"type": "message", "label": "IA1", "text": "正解"},
-                                            {"type": "message", "label": "IA1", "text": "正解"},
-                                            {"type": "message", "label": "IA1", "text": "正解"}]),
+                                    text = question,
+                                    actions=[{"type": "message", "label": "IB", "text": "正解"},
+                                            {"type": "message", "label": "IIA", "text": "正解"},
+                                            {"type": "message", "label": "IIB", "text": "正解"}]),
                     CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                                    text = "a",
-                                    actions=[{"type": "message", "label": "IA1", "text": "正解"},
-                                            {"type": "message", "label": "IA1", "text": "正解"},
-                                            {"type": "message", "label": "IA1", "text": "正解"}]),
+                                    text = question,
+                                    actions=[{"type": "message", "label": "IIIA", "text": "正解"},
+                                            {"type": "message", "label": "IIIB", "text": "正解"},
+                                            {"type": "message", "label": "IIIC", "text": "正解"}]),
                     CarouselColumn(title = "問題：正しいUICC第8版の肺癌ステージを選べ。",
-                                    text = "a",
-                                    actions=[{"type": "message", "label": "IA1", "text": "正解"},
-                                            {"type": "message", "label": "IA1", "text": "正解"},
-                                            {"type": "message", "label": "IA1", "text": "正解"}])]
+                                    text = question,
+                                    actions=[{"type": "message", "label": "IVA", "text": "正解"},
+                                            {"type": "message", "label": "IVB", "text": "正解"}])]
 
     messages = TemplateSendMessage(alt_text="問題です。", template=CarouselTemplate(columns=col_questions))
     line_bot_api.reply_message(event.reply_token, messages)
