@@ -92,8 +92,8 @@ def handle_text_message(event):
 '''
 
 @handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    linebot_api.reply_message(event.reply_token, message=TextSendMessage(text="hello"))
+def handle_text_message(event):
+    linebot_api.reply_message(event.reply_token, message=TextSendMessage(text="event.message.text"))
 
   
 if __name__ == '__main__':
